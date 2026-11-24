@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AE KB audit: social login test (Discord)</title>
+</head>
+<body>
+<h1>AE KB audit: social login test (Discord)</h1>
+<p>Test page for the Appreciation Engine help center audit. Social login test for the Testing AE Connect article. Same framework snippet as index.html, plus a Discord register link (data-ae-register-link="discord" from the AE JS Data Tags Reference) and the plain email form.</p>
+
+<script type="text/javascript" charset="utf-8" src="https://demo.theappreciationengine.com/framework/js/545"></script>
+<script type="text/javascript" charset="utf-8">
+  function AEJSReady(aeJS) {
+    /* additional settings go here */
+  }
+</script>
+
+<p><a href="#" data-ae-register-link="discord" data-ae-return="https://dubelyew.github.io/ae-signup-test/thanks.html">Register with Discord</a></p>
+
+<form data-ae-type="register" data-ae-register-form="email" data-ae-return="https://dubelyew.github.io/ae-signup-test/thanks.html">
+  <label for="ae-email-signup-email">Email address</label>
+  <input type="email" id="ae-email-signup-email" name="email" placeholder="Email address" required>
+
+  <label for="ae-email-signup-password">Password</label>
+  <input type="password" id="ae-email-signup-password" name="password" placeholder="Create a password" required>
+
+  <button type="submit">Sign up</button>
+</form>
+</body>
+</html>
