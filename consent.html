@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>AE KB audit: consent test</title></head><body>
+<h1>Consent test</h1><a href="#" id="cookieSettingsLink">Cookie Settings</a> <button id="dump">dump</button> <pre id="out">waiting</pre>
+<script>
+var q=new URLSearchParams(location.search); var fw=q.get('fw')==='fs'?'https://get.myfairshare.io/framework/js/657':'https://demo.theappreciationengine.com/framework/js/545';
+window.__log=[];
+function AEJSReady(aeJS){
+  window.pageAEJS=aeJS;
+  if(q.get('on')!=='0'){ aeJS.settings['consent_enabled']=true; }
+  aeJS.events.onConsentChange.addHandler(function(state){ window.__log.push({t:'onConsentChange',state:JSON.stringify(state)}); });
+  document.getElementById('out').textContent='ready consent_enabled='+aeJS.settings['consent_enabled'];
+}
+document.getElementById('cookieSettingsLink').addEventListener('click',function(e){e.preventDefault(); if(window.pageAEJS&&window.pageAEJS.trigger&&window.pageAEJS.trigger.cookie_preferences){window.pageAEJS.trigger.cookie_preferences();}});
+var s=document.createElement('script'); s.src=fw; s.charset='utf-8'; document.body.appendChild(s);
+</script></body></html>
