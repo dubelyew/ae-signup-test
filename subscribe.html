@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>AE KB audit: subscribe mode test</title></head><body>
+<h1>Subscribe mode test</h1>
+<form id="lead" data-ae-type="register" data-ae-register-form="email" data-ae-registration-mode="subscribe" data-ae-welcome-email="false" data-ae-return="https://dubelyew.github.io/ae-signup-test/subscribe.html?done=1">
+ <label for="e">Work email</label> <input id="e" type="email" name="email" required><br>
+ <label for="f">First name</label> <input id="f" type="text" name="firstname"><br>
+ <label for="s">Last name</label> <input id="s" type="text" name="surname"><br>
+ <label for="b">Business</label> <input id="b" type="text" name="extended-business"><br>
+ <label for="a">Number of artists</label> <input id="a" type="text" name="extended-number_of_artists"><br>
+ <label for="n">Notes</label> <textarea id="n" name="extended-notes"></textarea><br>
+ <input type="hidden" data-ae-password-generate>
+ <button type="submit">Request a conversation</button>
+</form>
+<pre id="out">waiting</pre>
+<script>
+var q=new URLSearchParams(location.search); var fw=q.get('fw')==='fs'?'https://get.myfairshare.io/framework/js/657':'https://demo.theappreciationengine.com/framework/js/545';
+window.__ev=[]; try{ var prev=JSON.parse(sessionStorage.getItem('ev')||'[]'); window.__ev=prev }catch(e){}
+function AEJSReady(aeJS){
+  window.pageAEJS=aeJS;
+  ['onLogin','onUser','onSubscribeSuccess','onFlow','onLogout'].forEach(function(n){ aeJS.events[n].addHandler(function(a,b){ window.__ev.push({n:n,a:JSON.stringify(a||null).slice(0,160),b:JSON.stringify(b||null).slice(0,80)}); try{sessionStorage.setItem('ev',JSON.stringify(window.__ev))}catch(e){} }); });
+  document.getElementById('out').textContent='ready loggedIn='+aeJS.loggedIn+' done='+q.get('done');
+}
+var s=document.createElement('script'); s.src=fw; s.charset='utf-8'; document.body.appendChild(s);
+</script></body></html>
