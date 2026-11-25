@@ -6,6 +6,7 @@ window.__log=[];
 function AEJSReady(aeJS){
   window.pageAEJS=aeJS;
   if(q.get('on')!=='0'){ aeJS.settings['consent_enabled']=true; }
+  if(q.get('gpcr')==='1'){ aeJS.settings['consent_categories']={essential:{required:true,gpcRestricted:false},analytics:{required:false,gpcRestricted:true},marketing:{required:false,gpcRestricted:true}}; }
   aeJS.events.onConsentChange.addHandler(function(state){ window.__log.push({t:'onConsentChange',state:JSON.stringify(state)}); });
   document.getElementById('out').textContent='ready consent_enabled='+aeJS.settings['consent_enabled'];
 }
